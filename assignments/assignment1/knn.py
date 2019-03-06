@@ -92,15 +92,13 @@ class KNN:
         dists, np array (num_test_samples, num_train_samples) - array
            with distances between each test and each train sample
         '''
-        num_train = self.train_X.shape[0]
-        num_test = X.shape[0]
-        # Using float32 to to save memory - the default is float64
-        # dists = np.zeros((num_test, num_train), np.float32)
-        # # TODO: Implement computing all distances with no loops!
 
+        # Using float32 to to save memory - the default is float64
+        # # TODO: Implement computing all distances with no loops!
         return np.sum(np.abs(X[:, :, np.newaxis] - self.train_X[:, :, np.newaxis].T), axis=1)
 
     def predict_labels_binary(self, dists):
+
         '''
         Returns model predictions for binary classification case
         
@@ -117,10 +115,9 @@ class KNN:
         for i in range(num_test):
             # TODO: Implement choosing best class based on k
 
-            knn_idxs = np.argpartition(dists[i], range(self.k))[:self.k]
-            knn_values = self.train_y[knn_idxs]
+            knn_values = self.train_y[np.argsort(dists[i])[:self.k]]
             uniq, cnts = np.unique(knn_values, return_counts=True)
-            pred[i] = max(zip(uniq, cnts), key=lambda x: x[1])[0]
+            pred[i] = uniq[np.argmax(cnts)]
         return pred
 
     def predict_labels_multiclass(self, dists):

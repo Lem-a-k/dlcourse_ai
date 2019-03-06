@@ -9,10 +9,6 @@ def binary_classification_metrics(prediction, ground_truth):
     Returns:
     precision, recall, f1, accuracy - classification metrics
     '''
-    precision = 0
-    recall = 0
-    accuracy = 0
-    f1 = 0
 
     tp = fp = tn = fn = 0
 
@@ -25,8 +21,6 @@ def binary_classification_metrics(prediction, ground_truth):
             fp += 1
         else:
             fn += 1
-    if prediction.shape[0] == 0:
-        print(prediction.shape)
     accuracy = (tp + tn) / prediction.shape[0]
     precision = tp / (tp + fp) if tp + fp > 0 else 0
     recall = tp / (tp + fn) if tp + fn > 0 else 0
@@ -37,7 +31,7 @@ def binary_classification_metrics(prediction, ground_truth):
     # Some helpful links:
     # https://en.wikipedia.org/wiki/Precision_and_recall
     # https://en.wikipedia.org/wiki/F1_score
-    
+
     return precision, recall, f1, accuracy
 
 
