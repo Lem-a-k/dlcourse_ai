@@ -15,7 +15,8 @@ def softmax(predictions):
     '''
     # TODO implement softmax
     # Your final implementation shouldn't have any loops
-    raise Exception("Not implemented!")
+
+    # raise Exception("Not implemented!")
 
 
 def cross_entropy_loss(probs, target_index):

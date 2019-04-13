@@ -27,7 +27,7 @@ def binary_classification_metrics(prediction, ground_truth):
 
     f1 = 2 * precision * recall / (precision + recall) if precision + recall > 0 else 0
 
-    # TODO: implement metrics!
+    # implement metrics!
     # Some helpful links:
     # https://en.wikipedia.org/wiki/Precision_and_recall
     # https://en.wikipedia.org/wiki/F1_score
@@ -46,6 +46,7 @@ def multiclass_accuracy(prediction, ground_truth):
     Returns:
     accuracy - ratio of accurate predictions to total samples
     '''
-    # TODO: Implement computing accuracy
+
+    # Implement computing accuracy
 
     return sum(1 for x, y in zip(prediction, ground_truth) if x == y) / prediction.shape[0]
